@@ -1,0 +1,67 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f3f3f3;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+h1 {
+  color: #ffcc00;
+  font-size: 36px;
+  margin-top: 20px;
+}
+
+.stats {
+  font-size: 22px;
+  margin: 20px 0;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  font-size: 18px;
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+button:focus {
+  outline: none;
+}
+
+#gold, #gps, #miners {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+#gps {
+  color: #ff6600;
+}
+
+#gold {
+  color: #ffd700;
+}
+
+#miners {
+  color: #32cd32;
+}
+
+#boosts {
+  margin-top: 20px;
+}
+
+#activeBoost {
+  font-weight: bold;
+  color: red;
+}
