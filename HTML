@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Idle Gold Miner</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>💰 Idle Gold Miner 💰</h1>
+  
+  <div class="stats">
+    <p id="gold">Gold: 0</p>
+    <p id="gps">Gold/sec: 0</p>
+    <p id="miners">Miners: 0</p>
+  </div>
+
+  <button onclick="mineGold()">⛏️ Mine Gold</button>
+  <button onclick="buyBasicMiner()">👷 Buy Basic Miner (50 gold)</button>
+  <button onclick="buyAdvancedMiner()">👷 Buy Advanced Miner (150 gold)</button>
+  <button onclick="buySuperMiner()">👷 Buy Super Miner (500 gold)</button>
+  <button onclick="activateBoost()">💥 Activate Gold Boost (100 gold)</button>
+
+  <div id="boosts">
+    <p>Active Boost: <span id="activeBoost">None</span></p>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
