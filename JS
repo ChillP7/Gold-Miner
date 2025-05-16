@@ -1,0 +1,84 @@
+let gold = parseFloat(localStorage.getItem('gold')) || 0;
+let miners = parseInt(localStorage.getItem('miners')) || 0;
+let basicMiners = 0;
+let advancedMiners = 0;
+let superMiners = 0;
+let goldPerClick = 1;
+let boostActive = false;
+
+function updateUI() {
+  document.getElementById('gold').innerText = `Gold: ${Math.floor(gold)}`;
+  document.getElementById('gps').innerText = `Gold/sec: ${calculateGoldPerSecond()}`;
+  document.getElementById('miners').innerText = `Miners: ${basicMiners + advancedMiners + superMiners}`;
+}
+
+function mineGold() {
+  gold += goldPerClick;
+  saveGame();
+  updateUI();
+}
+
+function buyBasicMiner() {
+  if (gold >= 50) {
+    gold -= 50;
+    basicMiners++;
+    saveGame();
+    updateUI();
+  }
+}
+
+function buyAdvancedMiner() {
+  if (gold >= 150) {
+    gold -= 150;
+    advancedMiners++;
+    saveGame();
+    updateUI();
+  }
+}
+
+function buySuperMiner() {
+  if (gold >= 500) {
+    gold -= 500;
+    superMiners++;
+    saveGame();
+    updateUI();
+  }
+}
+
+function activateBoost() {
+  if (gold >= 100 && !boostActive) {
+    gold -= 100;
+    boostActive = true;
+    setTimeout(() => {
+      boostActive = false;
+      document.getElementById('activeBoost').innerText = 'None';
+    }, 10000);  // Boost lasts for 10 seconds
+    document.getElementById('activeBoost').innerText = 'Gold Boost Active!';
+    saveGame();
+    updateUI();
+  }
+}
+
+function calculateGoldPerSecond() {
+  let gps = (basicMiners * 1) + (advancedMiners * 2) + (superMiners * 5);  // Example per second gold generation
+  if (boostActive) {
+    gps *= 2; // Double gold per second if boost is active
+  }
+  return gps;
+}
+
+function saveGame() {
+  localStorage.setItem('gold', gold);
+  localStorage.setItem('miners', basicMiners + advancedMiners + superMiners);
+  localStorage.setItem('basicMiners', basicMiners);
+  localStorage.setItem('advancedMiners', advancedMiners);
+  localStorage.setItem('superMiners', superMiners);
+}
+
+setInterval(() => {
+  gold += calculateGoldPerSecond();
+  saveGame();
+  updateUI();
+}, 1000);
+
+updateUI();
